@@ -1,0 +1,19 @@
+- name: Find roles path
+  ansible.builtin.debug:
+    msg: "{{ lookup('config', 'DEFAULT_ROLES_PATH') }}"
+  run_once: true
+  register: roles_path
+  delegate_to: localhost
+
+- name: Output roles path
+  ansible.builtin.debug:
+    msg: "{{ roles_path.msg[0] }}"
+  run_once: true
+  delegate_to: localhost
+
+- name: Install role
+  ansible.builtin.shell:
+    cmd: 'ansible-galaxy role install -p {{ roles_path.msg[0] }}
+          -r ./roles/requirements.yml'
+  run_once: true
+  delegate_to: localhost

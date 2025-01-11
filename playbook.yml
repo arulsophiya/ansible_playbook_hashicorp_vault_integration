@@ -1,0 +1,8 @@
+- name: Manage secrets in Hashicorp Vault
+  hosts: localhost
+  tasks:
+    - name: Install role
+      ansible.builtin.include_tasks: ./tasks/install_role.yml
+    - name: Include role
+      ansible.builtin.include_role:
+        name: ansible_role_hashivault_integration

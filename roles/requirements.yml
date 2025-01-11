@@ -1,0 +1,4 @@
+roles:
+  - src: https://github.com/arulsophiya/ansible_role_hashivault_integration.git
+    version: main
+    scm: git
